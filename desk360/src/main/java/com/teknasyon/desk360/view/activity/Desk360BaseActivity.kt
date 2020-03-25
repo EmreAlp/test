@@ -1,5 +1,6 @@
 package com.teknasyon.desk360.view.activity
 
+import android.app.Activity
 import android.app.ActivityManager
 import android.content.Context
 import android.graphics.Color
@@ -7,8 +8,10 @@ import android.graphics.PorterDuff
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -131,7 +134,7 @@ open class Desk360BaseActivity : AppCompatActivity(), LifecycleOwner {
                 PorterDuff.Mode.SRC_ATOP
             )
 
-            Handler().postDelayed({ addBtnClicked = false }, 500)
+
         }
     }
 
@@ -155,7 +158,8 @@ open class Desk360BaseActivity : AppCompatActivity(), LifecycleOwner {
         }
 
         binding!!.toolbarTitle.setTextColor(Color.parseColor(Desk360Constants.currentType?.data?.general_settings?.header_text_color))
-        binding!!.toolbarTitle.textSize = Desk360Constants.currentType?.data?.general_settings?.header_text_font_size!!.toFloat()
+        binding!!.toolbarTitle.textSize =
+            Desk360Constants.currentType?.data?.general_settings?.header_text_font_size!!.toFloat()
     }
 
     private fun setMainTitle(titleHead: String?, titleTextView: TextView?) {
@@ -171,6 +175,12 @@ open class Desk360BaseActivity : AppCompatActivity(), LifecycleOwner {
         if (addBtnClicked) {
             return false
         }
+
+        addBtnClicked = true
+        Handler().removeCallbacksAndMessages(null)
+        Handler().postDelayed({ addBtnClicked = false }, 800)
+
+        Log.e("exception","girdi")
 
         if (cacheTickets!!.size > 0) {
             setMainTitle(
@@ -218,12 +228,18 @@ open class Desk360BaseActivity : AppCompatActivity(), LifecycleOwner {
 
         val id = item.itemId
 
+        if (addBtnClicked) {
+            return true
+
+        }
         if (id == R.id.action_add_new_ticket) {
             addBtnClicked = true
-
+            Handler().removeCallbacksAndMessages(null);
+            Handler().postDelayed({ addBtnClicked = false }, 800)
             findNavController(findViewById(R.id.my_nav_host_fragment)).navigate(R.id.action_ticketListFragment_to_preNewTicketFragment)
             return true
         }
+
         return super.onOptionsItemSelected(item)
     }
 
@@ -252,6 +268,18 @@ open class Desk360BaseActivity : AppCompatActivity(), LifecycleOwner {
             finish()
         } else {
             super.onBackPressed()
+        }
+    }
+
+    fun blockUI(activity: Activity, status: Boolean) {
+
+        if (status) {
+            activity.window.setFlags(
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+            )
+        } else {
+            activity.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         }
     }
 

@@ -48,6 +48,8 @@ class SelectBoxViewGroup(val style: Desk360ScreenCreate, viewGroup: Fragment) {
 
         val fourDp = Util.changeDp(holder.selectBox?.context, 4f)
         val sixDp = Util.changeDp(holder.selectBox?.context, 4f)
+        val eightDp = Util.changeDp(holder.selectBox?.context, 8f)
+        val tenDp = Util.changeDp(holder.selectBox?.context, 10f)
         val twelveDp = Util.changeDp(holder.selectBox?.context, 13f)
 
         holder.underline?.visibility = View.INVISIBLE
@@ -63,6 +65,13 @@ class SelectBoxViewGroup(val style: Desk360ScreenCreate, viewGroup: Fragment) {
 
                 holder.shadowBorder?.setStroke(style.form_input_border_color)
                 holder.selectBoxCardView?.visibility = View.VISIBLE
+
+                holder.strokeView?.setPadding(
+                    0,
+                    Util.changeDp(holder.strokeView?.context, 10f),
+                    0,
+                    Util.changeDp(holder.strokeView?.context, 10f)
+                )
             }
             2 -> {
 
@@ -74,17 +83,23 @@ class SelectBoxViewGroup(val style: Desk360ScreenCreate, viewGroup: Fragment) {
                             ?: "#FFFFFF"
                     )
                 )
+
+                holder.strokeView?.setPadding(
+                    0,
+                    Util.changeDp(holder.strokeView?.context, 14f),
+                    0,
+                    Util.changeDp(holder.strokeView?.context, 8f)
+                )
             }
             else -> {
 
                 holder.selectBox?.setPadding(0, 0, 0, 0)
                 setMargin(holder.selectBox)
 
-                holder.strokeView?.setPadding(
+                holder.strokeView?.setPadding(0,
+                    Util.changeDp(holder.strokeView?.context, 11f),
                     0,
-                    Util.changeDp(holder.strokeView?.context, 10f),
-                    0,
-                    Util.changeDp(holder.strokeView?.context, 10f)
+                    Util.changeDp(holder.strokeView?.context, 30f)
                 )
 
                 holder.selectBoxCardView?.setBackgroundColor(
