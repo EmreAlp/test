@@ -46,15 +46,28 @@ class SelectBoxViewGroup(val style: Desk360ScreenCreate, viewGroup: Fragment) {
 
     fun createSpinner(): View? {
 
+        val fourDp = Util.changeDp(holder.selectBox?.context, 4f)
+        val nineDp = Util.changeDp(holder.selectBox?.context, 9f)
+        val twelveDp = Util.changeDp(holder.selectBox?.context, 12f)
+
         holder.underline?.visibility = View.INVISIBLE
         holder.selectBoxCardView?.visibility = View.INVISIBLE
+
         holder.strokeView?.setStroke(style)
+
         when (style.form_style_id) {
+
             3 -> {
+
+                holder.selectBox?.setPadding(fourDp, twelveDp, fourDp, twelveDp)
+
                 holder.shadowBorder?.setStroke(style.form_input_border_color)
                 holder.selectBoxCardView?.visibility = View.VISIBLE
             }
             2 -> {
+
+                holder.selectBox?.setPadding(fourDp, nineDp, fourDp, nineDp)
+
                 holder.selectBoxCardView?.setBackgroundColor(
                     Color.parseColor(
                         Desk360Constants.currentType?.data?.general_settings?.main_background_color
@@ -66,7 +79,13 @@ class SelectBoxViewGroup(val style: Desk360ScreenCreate, viewGroup: Fragment) {
 
                 holder.selectBox?.setPadding(0, 0, 0, 0)
                 setMargin(holder.selectBox)
-                holder.strokeView?.setPadding(0,Util.changeDp(holder.strokeView?.context,10f),0,Util.changeDp(holder.strokeView?.context,10f))
+
+                holder.strokeView?.setPadding(
+                    0,
+                    Util.changeDp(holder.strokeView?.context, 10f),
+                    0,
+                    Util.changeDp(holder.strokeView?.context, 10f)
+                )
 
                 holder.selectBoxCardView?.setBackgroundColor(
                     Color.parseColor(
@@ -118,7 +137,10 @@ fun ConstraintLayout.setStroke(style: Desk360ScreenCreate) {
 
 fun setMargin(selectBox: Spinner?) {
 
-    val params = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
+    val params = ConstraintLayout.LayoutParams(
+        ConstraintLayout.LayoutParams.MATCH_PARENT,
+        ConstraintLayout.LayoutParams.WRAP_CONTENT
+    )
     params.setMargins(0, 8, 0, 8)
     selectBox?.layoutParams = params
 }
@@ -128,7 +150,7 @@ fun LinearLayout.setStroke(borderColor: String) {
     val gd = GradientDrawable()
     gd.setColor(Color.TRANSPARENT)
     gd.cornerRadius = 16f
-    gd.setStroke(2, Color.parseColor(borderColor))
+    gd.setStroke(1, Color.parseColor(borderColor))
     this.background = gd
 }
 
