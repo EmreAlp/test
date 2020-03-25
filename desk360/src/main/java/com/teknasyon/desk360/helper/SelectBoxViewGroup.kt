@@ -47,8 +47,8 @@ class SelectBoxViewGroup(val style: Desk360ScreenCreate, viewGroup: Fragment) {
     fun createSpinner(): View? {
 
         val fourDp = Util.changeDp(holder.selectBox?.context, 4f)
-        val nineDp = Util.changeDp(holder.selectBox?.context, 9f)
-        val twelveDp = Util.changeDp(holder.selectBox?.context, 12f)
+        val sixDp = Util.changeDp(holder.selectBox?.context, 4f)
+        val twelveDp = Util.changeDp(holder.selectBox?.context, 13f)
 
         holder.underline?.visibility = View.INVISIBLE
         holder.selectBoxCardView?.visibility = View.INVISIBLE
@@ -66,7 +66,7 @@ class SelectBoxViewGroup(val style: Desk360ScreenCreate, viewGroup: Fragment) {
             }
             2 -> {
 
-                holder.selectBox?.setPadding(fourDp, nineDp, fourDp, nineDp)
+                holder.selectBox?.setPadding(fourDp, sixDp, fourDp, sixDp)
 
                 holder.selectBoxCardView?.setBackgroundColor(
                     Color.parseColor(

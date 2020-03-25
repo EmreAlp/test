@@ -40,6 +40,7 @@ open class Desk360BaseActivity : AppCompatActivity(), LifecycleOwner {
     private var currentScreenTicketList = true
     private var addBtnClicked = false
     var isMainLoadingShown = false
+    var isTicketDetailFragment = false
 
     private var binding: Desk360FragmentMainBinding? = null
 
@@ -92,24 +93,28 @@ open class Desk360BaseActivity : AppCompatActivity(), LifecycleOwner {
                         Desk360Constants.currentType?.data?.create_pre_screen?.title,
                         binding?.toolbarTitle
                     )
+                    isTicketDetailFragment = false
                 }
                 R.id.thanksFragment -> {
                     setMainTitle(
                         Desk360Constants.currentType?.data?.ticket_success_screen?.title,
                         binding?.toolbarTitle
                     )
+                    isTicketDetailFragment = false
                 }
                 R.id.ticketDetailFragment -> {
                     setMainTitle(
                         Desk360Constants.currentType?.data?.ticket_detail_screen?.title,
                         binding?.toolbarTitle
                     )
+                    isTicketDetailFragment = true
                 }
                 R.id.addNewTicketFragment -> {
                     setMainTitle(
                         Desk360Constants.currentType?.data?.create_screen?.title,
                         binding?.toolbarTitle
                     )
+                    isTicketDetailFragment = false
                 }
 
                 else -> ""

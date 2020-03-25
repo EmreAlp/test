@@ -839,7 +839,10 @@ open class Desk360AddNewTicketFragment : Fragment(),
             if (keypadHeight > screenHeight * 0.15) {
                 activity.contactUsMainBottomBar.visibility = View.GONE
             } else {
-                activity.contactUsMainBottomBar.visibility = View.VISIBLE
+
+                if(!activity.isTicketDetailFragment){
+                    activity.contactUsMainBottomBar.visibility = View.VISIBLE
+                }
             }
         }
     }

@@ -121,6 +121,8 @@ open class Desk360TicketDetailFragment : Fragment() {
             false
         )
 
+        desk360BaseActivity.contactUsMainBottomBar.visibility = View.GONE
+
         return binding?.root
     }
 
@@ -128,6 +130,7 @@ open class Desk360TicketDetailFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
+        desk360BaseActivity.contactUsMainBottomBar.visibility = View.GONE
         desk360BaseActivity.changeMainUI()
 
         cacheDesk360TicketResponse =
@@ -164,8 +167,6 @@ open class Desk360TicketDetailFragment : Fragment() {
         viewModel = ticketId?.let { TicketDetailViewModel(it) }
 
         viewModel?.ticketDetailList?.observe(this, observer)
-
-        (activity as Desk360BaseActivity).contactUsMainBottomBar.visibility = View.GONE
 
         viewModel?.addMessageItem?.observe(this, addMessageObserver)
 

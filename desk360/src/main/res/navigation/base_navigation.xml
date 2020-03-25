@@ -86,29 +86,30 @@
     </fragment>
 
     <fragment
+
         android:id="@+id/thanksFragment"
         android:name="com.teknasyon.desk360.view.fragment.Desk360SuccessScreen"
         tools:layout="@layout/desk360_success_screen_layout">
 
         <action
+
             android:id="@+id/action_thanksFragment_to_ticketListFragment"
             app:destination="@id/ticketListFragment"
             app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
+            app:popUpTo="@+id/base_navigation"
+            app:popUpToInclusive="true"
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right" />
+
     </fragment>
 
     <action
+
         android:id="@+id/action_global_ticketDetailFragment"
         app:destination="@id/ticketDetailFragment"
         app:launchSingleTop="false"
         app:popUpTo="@+id/ticketListFragment"
         app:popUpToInclusive="false" />
-
-    <fragment
-        android:id="@+id/exampleFragment"
-        android:name="com.teknasyon.desk360.view.fragment.ExampleFragment"
-        android:label="ExampleFragment" />
 
 </navigation>
