@@ -33,8 +33,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:text="@string/SUPPORT_TITLE" />
+                android:paddingBottom="8dp" />
 
         </com.teknasyon.desk360.helper.Desk360Toolbar>
 

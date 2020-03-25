@@ -8,9 +8,9 @@ import android.widget.LinearLayout
 import android.widget.Spinner
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.marginStart
 import androidx.fragment.app.Fragment
 import com.teknasyon.desk360.modelv2.Desk360ScreenCreate
+
 
 class SelectBoxViewGroup(val style: Desk360ScreenCreate, viewGroup: Fragment) {
 
@@ -63,7 +63,11 @@ class SelectBoxViewGroup(val style: Desk360ScreenCreate, viewGroup: Fragment) {
                 )
             }
             else -> {
+
                 holder.selectBox?.setPadding(0, 0, 0, 0)
+                setMargin(holder.selectBox)
+                holder.strokeView?.setPadding(0,Util.changeDp(holder.strokeView?.context,10f),0,Util.changeDp(holder.strokeView?.context,10f))
+
                 holder.selectBoxCardView?.setBackgroundColor(
                     Color.parseColor(
                         Desk360Constants.currentType?.data?.general_settings?.main_background_color
@@ -99,11 +103,11 @@ fun Spinner.setDesk360SpinnerStyle(style: Desk360ScreenCreate) {
 fun ConstraintLayout.setStroke(style: Desk360ScreenCreate) {
     when (style.form_style_id) {
         1 -> {
-            setPadding(0, 0, 0, 0)
+            setPadding(3, 0, 3, 0)
             //line
         }
         2 -> {
-            setPadding(8, 0, 0, 0)
+            setPadding(6, 0, 0, 0)
             //box
         }
         else -> {
@@ -112,13 +116,19 @@ fun ConstraintLayout.setStroke(style: Desk360ScreenCreate) {
     }
 }
 
+fun setMargin(selectBox: Spinner?) {
+
+    val params = ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.WRAP_CONTENT)
+    params.setMargins(0, 8, 0, 8)
+    selectBox?.layoutParams = params
+}
 
 fun LinearLayout.setStroke(borderColor: String) {
     //shadow
     val gd = GradientDrawable()
     gd.setColor(Color.TRANSPARENT)
     gd.cornerRadius = 16f
-    gd.setStroke(3, Color.parseColor(borderColor))
+    gd.setStroke(2, Color.parseColor(borderColor))
     this.background = gd
 }
 

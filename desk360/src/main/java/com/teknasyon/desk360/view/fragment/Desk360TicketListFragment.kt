@@ -231,6 +231,8 @@ open class Desk360TicketListFragment : Fragment() {
 
     private fun setViewFillLayout() {
 
+        desk360BaseActivity.toolbar_title.text = Desk360Constants.currentType?.data?.ticket_list_screen?.title
+
         binding!!.fillListLayout?.visibility = View.VISIBLE
         binding!!.fragmentTicketListRoot?.visibility = View.VISIBLE
         binding!!.loadingCurrentTicket?.visibility = View.INVISIBLE
@@ -239,10 +241,48 @@ open class Desk360TicketListFragment : Fragment() {
 
     private fun setViewEmptyLayout() {
 
+        desk360BaseActivity.toolbar_title.text = Desk360Constants.currentType?.data?.first_screen?.title
+
         binding!!.fillListLayout?.visibility = View.INVISIBLE
         binding!!.fragmentTicketListRoot?.visibility = View.VISIBLE
         binding!!.loadingCurrentTicket?.visibility = View.INVISIBLE
         binding!!.emptyListLayoutTicketList?.visibility = View.VISIBLE
+
+        //Main BackGround Color
+        binding!!.txtBottomFooterMainTicketList.setBackgroundColor(Color.parseColor(Desk360Constants.currentType?.data?.general_settings?.main_background_color))
+
+        //Sub Title Text
+        binding!!.emptyListLayoutTicketListSubTitle.setTextColor(Color.parseColor(Desk360Constants.currentType?.data?.first_screen?.sub_title_color))
+        binding!!.emptyListLayoutTicketListSubTitle.text= Desk360Constants.currentType?.data?.first_screen?.sub_title
+        binding!!.emptyListLayoutTicketListSubTitle.textSize = Desk360Constants.currentType?.data?.first_screen?.sub_title_font_size!!.toFloat()
+
+        //Description Title Text
+        binding!!.emptyListLayoutTicketListDesc.setTextColor(Color.parseColor(Desk360Constants.currentType?.data?.first_screen?.description_color))
+        binding!!.emptyListLayoutTicketListDesc.text= Desk360Constants.currentType?.data?.first_screen?.description
+        binding!!.emptyListLayoutTicketListDesc.textSize = Desk360Constants.currentType?.data?.first_screen?.description_font_size!!.toFloat()
+
+        binding!!.txtOpenMessageFormTicketList.setTextColor(Color.parseColor(Desk360Constants.currentType?.data?.first_screen?.button_text_color))
+        binding!!.txtOpenMessageFormTicketList.textSize = Desk360Constants.currentType?.data?.first_screen?.button_text_font_size!!.toFloat()
+        binding!!.txtOpenMessageFormTicketList.text = Desk360CustomStyle.setButtonText(
+            Desk360Constants.currentType?.data?.first_screen?.button_text!!.length,
+            Desk360Constants.currentType?.data?.first_screen?.button_text
+        )
+
+        if (Desk360Constants.currentType?.data?.first_screen?.button_icon_is_hidden == true) {
+            binding!!.firstScreenButtonIcon.visibility= View.VISIBLE
+        } else {
+            binding!!.firstScreenButtonIcon.visibility= View.INVISIBLE
+        }
+
+        binding!!.txtBottomFooterMainTicketList.setTextColor(Color.parseColor(Desk360Constants.currentType?.data?.general_settings?.bottom_note_color))
+        binding!!.txtBottomFooterMainTicketList.textSize=Desk360Constants.currentType?.data?.general_settings?.bottom_note_font_size!!.toFloat()
+
+        binding!!.txtBottomFooterMainTicketList.text = Desk360Constants.currentType?.data?.first_screen?.bottom_note_text
+        if (!Desk360Constants.currentType?.data?.first_screen?.bottom_note_is_hidden!!) {
+            binding!!.txtBottomFooterMainTicketList.visibility = View.INVISIBLE
+        } else {
+            binding!!.txtBottomFooterMainTicketList.visibility = View.VISIBLE
+        }
     }
 
     private fun setUnreadTicketSize(sizeUnread: Int) {

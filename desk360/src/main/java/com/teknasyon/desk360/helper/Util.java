@@ -1,7 +1,10 @@
 package com.teknasyon.desk360.helper;
 
+import android.content.Context;
 import android.view.MotionEvent;
 import android.widget.EditText;
+
+import androidx.core.content.ContextCompat;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -52,5 +55,11 @@ public class Util {
         Date expireDate = convertStringToDate(expireDateString,"yyyy-MM-dd HH:mm:ss");
 
         return date.after(expireDate);
+    }
+
+    public static int changeDp(Context context,float dp){
+
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dp * scale + 0.5f);
     }
 }

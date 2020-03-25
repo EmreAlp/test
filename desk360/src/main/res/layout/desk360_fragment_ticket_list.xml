@@ -15,6 +15,7 @@
             android:layout_height="match_parent">
 
             <com.teknasyon.desk360.themev2.Desk360LayoutTicket
+
                 android:id="@+id/fill_list_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -87,6 +88,7 @@
             </com.teknasyon.desk360.themev2.Desk360LayoutTicket>
 
             <com.teknasyon.desk360.themev2.Desk360MainBackground
+
                 android:id="@+id/empty_list_layout_ticket_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -126,7 +128,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="İlk yardım mesajını yaratmak ve canlı destek almak için bize ulaşın!" />
 
-
                 <com.teknasyon.desk360.themev2.Desk360CommonButton
                     android:id="@+id/emptysAddNewTicketButtonTicketList"
                     android:layout_width="match_parent"
@@ -163,7 +164,6 @@
 
                 </com.teknasyon.desk360.themev2.Desk360CommonButton>
 
-
                 <com.teknasyon.desk360.themev2.Desk360CommonFooterText
                     android:id="@+id/txtBottomFooterMainTicketList"
                     android:layout_width="0dp"
@@ -178,7 +178,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     tools:ignore="MissingConstraints,SmallSp"
                     tools:text="Destek mesajlarınız mesai saatleri içerisinde yanıtlar. Buraya buna benzer bir içerik mesajı ve alt kısa açıklama eklenir. Geliştirici istediği mesajı burada verebilir. Kullanılması zorunlu değildir. Destek mesajlarınız mesai saatleri içerisinde yanıtlar. Destek mesajlarınız mesai saatleri içerisinde yanıtlar. Buraya buna benzer bir içerik mesajı ve alt kısa açıklama eklenir. Geliştirici istediği mesajı burada verebilir. Kullanılması zorunlu değildir. Destek mesajlarınız mesai saatleri içerisinde yanıtlar. Destek mesajlarınız mesai saatleri içerisinde yanıtlar. Buraya buna benzer bir içerik mesajı ve alt kısa açıklama eklenir. Geliştirici istediği mesajı burada verebilir. Kullanılması zorunlu değildir. Destek mesajlarınız mesai saatleri içerisinde yanıtlar. " />
-
 
             </com.teknasyon.desk360.themev2.Desk360MainBackground>
 

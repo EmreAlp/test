@@ -8,7 +8,7 @@
     android:background="@color/white"
     android:gravity="center_vertical"
     android:paddingStart="16dp"
-    android:paddingLeft="16dp"
+    android:paddingLeft="6dp"
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
     android:singleLine="true"
