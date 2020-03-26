@@ -62,9 +62,17 @@ class TextAreaViewGroup(val style: Desk360ScreenCreate, viewGroup: Fragment) {
                 holder.textAreaLayout?.setStroke(style)
                 holder.textAreaLayout?.boxBackgroundMode = TextInputLayout.BOX_BACKGROUND_NONE
             }
-            else -> {
+            2 -> {
                 //box
                 holder.textAreaLayout?.setPadding(0, 0, 0, 0)
+                holder.textAreaLayout?.boxBackgroundMode = TextInputLayout.BOX_BACKGROUND_OUTLINE
+            }
+
+            1 -> {
+                //line
+                val five = Util.changeDp(holder.textAreaLayout?.context,7f)
+
+                holder.textAreaLayout?.setPadding(0, five, 0, 0)
                 holder.textAreaLayout?.boxBackgroundMode = TextInputLayout.BOX_BACKGROUND_OUTLINE
             }
         }

@@ -46,7 +46,7 @@ class TextInputViewGroup(val style: Desk360ScreenCreate, viewGroup: Fragment) {
         else
             holder.cardView?.visibility = View.VISIBLE
 
-        holder.textInputEditText?.setDesk360InputStyle(style)
+        holder.textInputEditText?.setDesk360InputStyle(style,holder.textInputEditText)
         holder.textInputLayout?.setDesk360TextAreaStyle(style)
 
         when (style.form_style_id) {
@@ -80,7 +80,10 @@ class TextInputViewGroup(val style: Desk360ScreenCreate, viewGroup: Fragment) {
 }
 
 @SuppressLint("ClickableViewAccessibility")
-fun TextInputEditText.setDesk360InputStyle(style: Desk360ScreenCreate) {
+fun TextInputEditText.setDesk360InputStyle(
+    style: Desk360ScreenCreate,
+    textInputEditText: TextInputEditText?
+) {
 
     this.setTextColor(Color.parseColor(style.form_input_focus_color))
 
@@ -90,7 +93,7 @@ fun TextInputEditText.setDesk360InputStyle(style: Desk360ScreenCreate) {
 
         1 -> {
             //line
-            this.setPadding(0, 24, 0, 24)
+            this.setPadding(0, Util.changeDp(textInputEditText?.context,0f), 0, 24)
 
             val states = Array(2, init = { IntArray(1) })
             states[0] = IntArray(1) {-android.R.attr.state_focused}
