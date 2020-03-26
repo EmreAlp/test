@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.os.Handler
 import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.view.LayoutInflater
@@ -77,6 +78,11 @@ open class Desk360TicketListFragment : Fragment() {
             }
 
             binding?.emptysAddNewTicketButtonTicketList?.setOnClickListener {
+
+                desk360BaseActivity.addBtnClicked = true
+                Handler().removeCallbacksAndMessages(null)
+                Handler().postDelayed({ desk360BaseActivity.addBtnClicked = false }, 800)
+
                 Navigation
                     .findNavController(binding!!.root)
                     .navigate(R.id.action_ticketListFragment_to_addNewTicketFragment)

@@ -41,7 +41,7 @@ open class Desk360BaseActivity : AppCompatActivity(), LifecycleOwner {
     var appId: String? = null
 
     private var currentScreenTicketList = true
-    private var addBtnClicked = false
+    var addBtnClicked = false
     var isMainLoadingShown = false
     var isTicketDetailFragment = false
 
